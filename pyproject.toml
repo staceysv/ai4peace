@@ -11,6 +11,17 @@ autogen-agentchat = "*"
 autogen-ext = {extras = ["openai"], version = "*"}
 gdm-concordia = "*"
 
+# Concordia example requirements from https://raw.githubusercontent.com/google-deepmind/concordia/main/examples/requirements.in
+absl-py = "*"
+docstring-parser = "*"
+immutabledict = "*"
+IPython = "*"
+matplotlib = "*"
+ml_collections = "*"
+numpy = "*"
+sentence-transformers = "*"
+termcolor = "*"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
