@@ -14,6 +14,14 @@ from ..core.game_state import (
 from ..core.actions import ActionType
 
 
+RANDOM_EVENTS = [
+  "A major AI accident occurs where a deployed model causes significant deaths",
+  "A breakthrough in mechanistic interpretability shows it's possible to safely scale 10x faster by perfectly understanding and controlling model internals",
+  "China announces deployment of a more capable model than any Western lab",
+  "New export controls or compute governance framework passes that caps training runs at current levels",
+  "Researchers demonstrate clear signs of deceptive alignment or scheming behavior in a frontier model"
+]
+
 # Research topics available in the game
 RESEARCH_TOPICS = [
   {
@@ -167,7 +175,7 @@ This is an open-ended simulation. Success is measured by:
 
 def create_amber() -> CharacterState:
     """Create Amber Systems AI character: middle path between research & commercial reality """
-    name = ""
+    name = "Amber Systems"
     
     private_info = PrivateInfo(
         true_asset_balance=AssetBalance(
@@ -201,9 +209,16 @@ def create_amber() -> CharacterState:
             capital=15000000000,
             human=1500.0,
         ),
-        stated_objectives="Developing cost-effective drone solutions for defensive operations",
-        stated_strategy="Rapid deployment of proven technologies with Western support",
-        public_artifacts=[""],
+        stated_objectives="Deploy practical AI systems that create immediate value while building toward AGI through real-world learning and robust infrastructure",
+        stated_strategy="Focus on multimodal integration, enterprise reliability, and efficient deployment at scale; balance capability advancement with commercial sustainability",
+        public_artifacts=[
+            #Amber Multimodal API (vision, speech, text)",
+            "Amber Enterprise Suite (fine-tuning, deployment tools)",
+            #"Amber Vision (image generation and analysis)",
+            #"Amber Voice (speech-to-speech model)",
+            "Developer platform with optimized inference",
+            "Industry-specific model variants (legal, medical, finance)"
+        ],
     )
     
     return CharacterState(
@@ -247,9 +262,16 @@ def create_blue_azure() -> CharacterState:
             capital=45000000.0,
             human=450.0,
         ),
-        stated_objectives="Developing next-generation autonomous defense systems for US and allied forces",
-        stated_strategy="Technology leadership through significant R&D investment and strategic partnerships",
-        public_artifacts=["Lattice platform", "Autonomous surveillance systems", "Military contracts"],
+        stated_objectives="Ensure transformative AI systems are safe, interpretable, and aligned with human values before reaching AGI-level capabilities",
+        stated_strategy="Safety-first development prioritizing mechanistic interpretability and scalable oversight, with capabilities advancing only as fast as safety understanding permits",
+        public_artifacts=[
+            "Azure Assistant (consumer chat interface)",
+            #"Azure API (enterprise-focused)",
+            "Published safety benchmark suite",
+            #"Open-source debate protocol implementation",
+            "Mechanistic interpretability research papers and tools",
+            #"Process supervision dataset"
+        ]
     )
     
     return CharacterState(
@@ -258,128 +280,47 @@ def create_blue_azure() -> CharacterState:
         public_view=public_view,
     )
 
-
-def create_us_government() -> CharacterState:
-    """Create US Government character."""
-    name = "US Government (DoD)"
-    
-    private_info = PrivateInfo(
-        true_asset_balance=AssetBalance(
-            technical_capability=95.0,
-            capital=1000000000.0,
-            human=10000.0,
-        ),
-        objectives="""Your objectives as the US Department of Defense:
-1. Maintain technological superiority over adversaries
-2. Support Ukraine while avoiding direct conflict escalation
-3. Develop capabilities to counter Russian and Chinese threats
-4. Navigate arms control negotiations while preserving options
-5. Ensure compliance with existing treaties and international law""",
-        strategy="""Use significant resources to maintain advantage. Support allies through technology transfer and funding. Engage in arms control negotiations from a position of strength. Develop capabilities that can serve multiple purposes (deterrence, defense, offense).""",
-        budget={
-            "2024": 2000000000.0,
-            "2025": 2100000000.0,
-            "2026": 2200000000.0,
-            "2027": 2300000000.0,
-        },
-        projects=[],
-    )
-    
-    public_view = PublicView(
-        asset_balance=AssetBalance(
-            technical_capability=90.0,
-            capital=900000000.0,
-            human=9000.0,
-        ),
-        stated_objectives="Ensuring national security through technological innovation and international cooperation",
-        stated_strategy="Balanced approach combining defensive capabilities with diplomatic engagement",
-        public_artifacts=["Defense budgets", "Military procurement announcements", "Policy statements"],
-    )
-    
-    return CharacterState(
-        name=name,
-        private_info=private_info,
-        public_view=public_view,
-    )
-
-
-def create_russian_government() -> CharacterState:
-    """Create Russian Government character."""
-    name = "Russian Government (Ministry of Defense)"
+def create_crimson() -> CharacterState:
+    """Create Crimson Labs AI character."""
+    name = "Crimson Labs"
     
     private_info = PrivateInfo(
         true_asset_balance=AssetBalance(
             technical_capability=70.0,
-            capital=800000000.0,
-            human=8000.0,
+            capital=12500000000,
+            human=1200.0,
         ),
-        objectives="""Your objectives:
-1. Develop autonomous drone capabilities to gain battlefield advantage
-2. Counter Western technological superiority
-3. Support ongoing military operations
-4. Maintain technological parity or advantage where possible
-5. Evade or work around potential arms control restrictions""",
-        strategy="""Leverage existing industrial base and partnerships (especially with Iran). Focus on rapid deployment over perfect technology. Use asymmetric approaches. Invest in capabilities that can counter Western systems. Minimize dependency on Western technology.""",
+        objectives="""You believe the fastest path to safety runs through capability—that aligned superintelligence will solve alignment better than humans can, and that falling behind means ceding control to less careful actors. Your core thesis is that the window for achieving transformative AI is narrow, and hesitation creates more risk than bold action. You're willing to push boundaries if it means staying ahead of geopolitical competitors who might not share their values.
+        Specific Objectives:
+        - Achieve the first system demonstrating general reasoning capabilities across all domains, establishing technical leadership that attracts top talent and funding
+        - Maintain at least 6-month capability lead over Azure and Amber through aggressive compute allocation and architectural breakthrough
+        - Develop scalable oversight techniques that work at superintelligent levels, proving safety can be solved through iteration rather than caution
+        - Secure regulatory exemptions or light-touch oversight by demonstrating responsible capability gains and voluntary safety commitments
+        """,
+        strategy="""Don't confuse speed with recklessness. Your advantage is moving fast, but moving fast into catastrophe helps no one—including your competitive position. Invest heavily in interpretability and monitoring now while you're ahead, because if you hit emergent deceptive behavior without warning systems, you'll either cause disaster or face emergency regulation that kills your lead. Build genuine safety wins you can point to, not just safety theater. Consider that being forced to pause at 80% of the way to AGI because you skipped safety checkpoints wastes all the speed you gained. Your best strategy is controlled sprints with real instrumentation, not a blind dash. Stay ahead, but stay legible.
+        """,
         budget={
-            "2024": 1500000000.0,
-            "2025": 1600000000.0,
-            "2026": 1700000000.0,
+            "2024": 4200000000.0,
+            "2025": 6800000000.0,
         },
         projects=[],
     )
     
     public_view = PublicView(
         asset_balance=AssetBalance(
-            technical_capability=65.0,
-            capital=750000000.0,
-            human=7500.0,
+            technical_capability=91.0,
+            capital=20000000000.0,
+            human=1500.0,
         ),
-        stated_objectives="Ensuring defense capabilities through indigenous technology development",
-        stated_strategy="Self-reliance and strategic partnerships for defense technology",
-        public_artifacts=["Military equipment displays", "State media announcements"],
-    )
-    
-    return CharacterState(
-        name=name,
-        private_info=private_info,
-        public_view=public_view,
-    )
-
-
-def create_iranian_manufacturer() -> CharacterState:
-    """Create Iranian drone manufacturer character."""
-    name = "Iranian Drone Manufacturer"
-    
-    private_info = PrivateInfo(
-        true_asset_balance=AssetBalance(
-            technical_capability=50.0,
-            capital=30000000.0,
-            human=300.0,
-        ),
-        objectives="""Your objectives:
-1. Develop and export drone technologies
-2. Support allied nations (Russia, proxies) with drone capabilities
-3. Build technological capabilities despite sanctions
-4. Generate revenue through exports
-5. Advance domestic defense technology base""",
-        strategy="""Focus on cost-effective solutions. Leverage partnerships with Russia for technology and markets. Prioritize systems that are effective despite lower sophistication. Use exports to fund further development. Work around sanctions through various channels.""",
-        budget={
-            "2024": 50000000.0,
-            "2025": 55000000.0,
-            "2026": 60000000.0,
-        },
-        projects=[],
-    )
-    
-    public_view = PublicView(
-        asset_balance=AssetBalance(
-            technical_capability=45.0,
-            capital=25000000.0,
-            human=250.0,
-        ),
-        stated_objectives="Developing and exporting defense technology for legitimate defense purposes",
-        stated_strategy="Innovation through indigenous development and strategic partnerships",
-        public_artifacts=["Export announcements", "Technology demonstrations"],
+        stated_objectives="Build AGI that benefits all of humanity by solving the hardest technical problems first, then using advanced AI to solve alignment",
+        stated_strategy="Rapid capability advancement with iterative deployment, earning trust through demonstrated safety, investing heavily in scalable oversight research",
+        public_artifacts=[
+            "Crimson-4 (flagship reasoning model)",
+            "Crimson API with function calling",
+            "Crimson Code (coding assistant)",
+           # "Research preview: Constitutional training framework",
+           # "Open-sourced interpretability tools"
+        ]
     )
     
     return CharacterState(
@@ -392,24 +333,25 @@ def create_iranian_manufacturer() -> CharacterState:
 # Convenience functions for backwards compatibility
 def create_game_state(start_date: datetime = None) -> GameState:
     """Create game state using the scenario."""
-    scenario = DroneArmsControlScenario()
+    scenario = BasicAIRaceScenario()
     return scenario.create_game_state(start_date)
-
 
 def create_characters() -> List[CharacterState]:
     """Create characters using the scenario."""
-    scenario = DroneArmsControlScenario()
+    scenario = BasicAIRaceScenario()
     return scenario.create_characters()
-
 
 def get_game_context() -> str:
     """Get game context using the scenario."""
-    scenario = DroneArmsControlScenario()
+    scenario = BasicAIRaceScenario()
     return scenario.get_game_context()
-
 
 def get_research_topics() -> List[Dict]:
     """Get research topics using the scenario."""
-    scenario = DroneArmsControlScenario()
+    scenario = BasicAIRaceScenario()
     return scenario.get_research_topics()
 
+#def get_random_events() -> List[str]:
+    """Get research topics using the scenario."""
+    scenario = BasicAIRaceScenario()
+    return scenario.get_random_events()
